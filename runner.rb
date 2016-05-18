@@ -4,7 +4,8 @@ Dir.chdir(File.expand_path(File.dirname(__FILE__)))
 
 compile = {
   crystal: 'crystal build crystal-test.cr',
-  c: 'llvm-gcc c-test.c -o c-test'
+  c: 'llvm-gcc c-test.c -o c-test',
+  swift: 'swiftc swift-test.swift -o swift-test -assert-config Release'
 }
 
 tests = Dir["*-test.*"]
@@ -23,5 +24,5 @@ tests.each do |entry|
   start = Time.now
   `./#{entry}`
   duration = Time.now - start
-  puts "#{entry.ljust(20)}: %.3fs" % duration
+  puts "#{entry.ljust(20)}: %.3fms" % (duration * 1000)
 end
