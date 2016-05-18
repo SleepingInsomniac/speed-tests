@@ -1,6 +1,5 @@
 #!/usr/bin/env lua
 
--- defines a factorial function
 function factorial (n)
   if n == 0 then
     return 1
@@ -9,6 +8,4 @@ function factorial (n)
   end
 end
 
--- print("enter a number:")
--- a = io.read("*number")        -- read a number
 print(factorial(100))

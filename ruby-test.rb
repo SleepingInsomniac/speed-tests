@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-# defines a factorial function
 def factorial(n)
   if n == 0
     1.0
