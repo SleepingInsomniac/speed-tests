@@ -5,7 +5,8 @@ Dir.chdir(File.expand_path(File.dirname(__FILE__)))
 compile = {
   crystal: 'crystal build crystal-test.cr --release',
   c: 'llvm-gcc c-test.c -o c-test',
-  swift: 'swiftc swift-test.swift -o swift-test -assert-config Release'
+  swift: 'swiftc swift-test.swift -o swift-test -assert-config Release',
+  rust: 'rustc rust-test.rs -o rust-test'
 }
 
 tests = Dir["*-test.*"]
