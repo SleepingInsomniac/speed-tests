@@ -43,8 +43,7 @@ tests.each do |entry|
   start = Time.now
   `./#{entry}`
   duration = Time.now - start
-  times[entry.to_sym] = duration
-  # print "."
+  $?.success? ? times[entry.to_sym] = duration : times[entry.to_sym] = 'Failed'
 end
 puts # new line
 
