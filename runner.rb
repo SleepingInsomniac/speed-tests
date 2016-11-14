@@ -10,6 +10,18 @@ compile = {
   go:      'go build go-test.go'
 }
 
+versions = {
+  crystal: 'crystal --version',
+  c: 'llvm-gcc --version',
+  swift: 'swiftc --version',
+  rust: 'rustc --version',
+  go: 'go version',
+  js: 'node --version',
+  php: 'php --version',
+  lua: 'lua -v',
+  ruby: 'ruby --version'
+}
+
 tests = Dir["*-test.*"]
 times = Hash.new
 
@@ -21,13 +33,18 @@ tests.each do |entry|
     entry = "#{language_base}-test"
   end
   
+  if versions.include?(language_base)
+    puts "---- #{language_base}"
+    system(versions[language_base])
+  end
+  
   system("chmod +x #{entry}")
   
   start = Time.now
   `./#{entry}`
   duration = Time.now - start
   times[entry.to_sym] = duration
-  print "."
+  # print "."
 end
 puts # new line
 
